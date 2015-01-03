@@ -23,6 +23,9 @@ namespace Serpentina
 		enumDirecciónAbsoluta _dirección = enumDirecciónAbsoluta.Arriba;
 		Tuple<int, int> _Pos;
 
+		// TODO Cambiar historial de dir relativa a absoluta;  o bien, agragar variable que dice hacia dónde absolutamente se dirige la cabeza.
+		// De lo contrario, girar es un invariante.
+
 		enumDirecciónRelativa[] _Historial;
 		/// <summary>
 		/// Posición de la cabeza en el arreglo _dirección[];
