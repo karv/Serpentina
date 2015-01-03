@@ -2,7 +2,7 @@ using System;
 
 namespace Serpentina
 {
-	public class Serptiente
+	public class Serpiente
 	{
 		public enum enumDirecciónAbsoluta
 		{
@@ -32,7 +32,10 @@ namespace Serpentina
 		readonly int MaxLong;
 
 		int _Longitud = 1;
-
+		/// <summary>
+		/// La longitud actual de la serpiente.
+		/// </summary>
+		/// <value>The longitud.</value>
 		public int Longitud {
 			get {
 				return  
@@ -68,21 +71,23 @@ namespace Serpentina
 
 		/// <summary>
 		/// Devuelve la posición de una parte del cuerpo de la serpiente.
-		/// 0 = cabeza, 1 = cuello, etc.
+		/// i = 0 => cabeza, i = 1 => cuello, etc.
 		/// </summary>
 		/// <param name="i">The index.</param>
 		public Tuple<int, int> Pos (int i) {
-		if (i == 0)
-			return Posición;
-		if (i >= Longitud)
-			throw new Exception ("Offbounds");
+			if (i == 0)
+				return Posición;
+			if (i >= Longitud)
+				throw new IndexOutOfRangeException();
 
-		Tuple<int, int> ret = Pos (i - 1);
-		Serptiente tmp = Partir (i - 1);
+			Tuple<int, int> ret = Pos (i - 1);
+			Serpiente tmp = Cola (i - 1);
+			enumDirecciónAbsoluta da = tmp.DirecciónAbsoluta;
+			
 
 			// TODO: Convvertir a dir relativa
 			switch (_Historial[getIndexofPart(i)]) {
-			case enumDirecciónAb.Arriba:
+			case enumDirecciónAbsoluta.Arriba:
 				ret.Item2 ++;
 				break;
 			case enumDirecciónAbsoluta.Abajo:
@@ -99,31 +104,39 @@ namespace Serpentina
 		}
 
 		/// <summary>
-		/// OBtiene la serpiente hiecha de los primeros i partes de la actual.
+		/// Obtiene la serpiente hecha de los primeros i partes de la actual.
+		/// Obtiene la cola de la serpiente.
 		/// </summary>
-		/// <param name="i">The index.</param>
-		public Serptiente Partir (int i)
+		/// <param name="i">Índice de la cabeza de la nueva serpiente.</param>
+		public Serpiente Cola (int i)
 		{
-			Serptiente ret = new Serptiente (MaxLong);
-			ret._Historial = _Historial.Clone ();
-			ret = PosCabeza = Pos;
-			ret.Longitud = i;
+			Serpiente ret = new Serpiente (MaxLong);
+			ret._Historial = (enumDirecciónRelativa[])_Historial.Clone ();
+			ret.PosCabeza = i;
+			ret.Longitud = Longitud - i;
 			return ret;
 		}
 
+
+
+		public int ObtenerÍndiceCola ()
+		{
+			return getIndexofPart (1 - Longitud);
+		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Serpentina.Serptiente"/> class.
 		/// </summary>
 		/// <param name="maxTamaño">Tamaño máximo de la serpiente</param>
-		public Serptiente (int maxTamaño)
+		public Serpiente (int maxTamaño)
 		{
 			_Historial = new enumDirecciónRelativa[maxTamaño];
 		}
 
-
-
-
+		/// <summary>
+		/// Avanza la serpiente hacia la dirección dir.
+		/// </summary>
+		/// <param name="dir">Dir.</param>
 		public void Avanzar (enumDirecciónRelativa dir)
 		{
 			PosCabeza = (PosCabeza + 1) % MaxLong;

@@ -6,7 +6,7 @@ namespace Serpentina
 	{
 		public static void Main (string[] args)
 		{
-			Serptiente s = new Serptiente (10);
+			Serpiente s = new Serpiente (10);
 
 
 			Console.WriteLine ("Hello World!");
