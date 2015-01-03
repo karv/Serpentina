@@ -1,5 +1,23 @@
 using System;
 
+namespace Structs
+{
+	// TODO Cambiar Tuple <,> por Par <,>.
+	public struct Par <S, T>
+	{
+		public S x;
+		public T y;
+
+		public override bool Equals (object obj)
+		{
+			if (typeof(obj) is Par<S, T>) {
+				Par <S, T> cmp = (Par<S, T>)obj;
+				return x.Equals (cmp.x) && y.Equals (cmp.y);
+			}
+			return false;
+		}
+	}
+}
 namespace Serpentina
 {
 	public class Serpiente
@@ -21,12 +39,12 @@ namespace Serpentina
 		}
 
 		enumDirecciónAbsoluta _dirección = enumDirecciónAbsoluta.Arriba;
-		Tuple<int, int> _Pos;
+		Structs.Par<int, int> _Pos;
 
 		// TODO Cambiar historial de dir relativa a absoluta;  o bien, agragar variable que dice hacia dónde absolutamente se dirige la cabeza.
 		// De lo contrario, girar es un invariante.
 
-		enumDirecciónRelativa[] _Historial;
+		enumDirecciónAbsoluta[] _Historial;
 		/// <summary>
 		/// Posición de la cabeza en el arreglo _dirección[];
 		/// </summary>
