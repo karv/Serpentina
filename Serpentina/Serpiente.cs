@@ -50,6 +50,9 @@ namespace Serpentina
 		/// </summary>
 		int PosCabeza = 0;
 
+		/// <summary>
+		/// La longitud máxima de la serpiente permitido por la longitud del arreglo.
+		/// </summary>
 		readonly int MaxLong;
 
 		int _Longitud = 1;
@@ -63,7 +66,23 @@ namespace Serpentina
 					_Longitud;
 			}
 			set {
-				_Longitud = Math.Min (Math.Max (value, 1), MaxLong);
+				_Longitud = Math.Min (Math.Max (value, 1), MaxLongitud);
+			}
+		}
+
+		int _MaxLongitud = 1;
+
+		/// <summary>
+		/// Devuelve o establece la longitud máxima de la serpiente.
+		/// </summary>
+		/// <value>The max longitud.</value>
+		public int MaxLongitud {
+			get {
+				return _MaxLongitud;
+			}
+			set {
+				_MaxLongitud = Math.Min (Math.Max (value, 1), MaxLong);
+				Longitud = Longitud;	// Recalcula la longitud dada esta nueva restricción.
 			}
 		}
 
@@ -170,9 +189,8 @@ namespace Serpentina
 		{
 			PosCabeza = (PosCabeza + 1) % MaxLong;
 			_Historial [PosCabeza] = dir;
-			if (Longitud < MaxLong)
+			if (Longitud < MaxLongitud)
 				Longitud++;
 		}
 	}
 }
-
