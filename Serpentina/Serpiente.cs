@@ -170,6 +170,8 @@ namespace Serpentina
 		{
 			PosCabeza = (PosCabeza + 1) % MaxLong;
 			_Historial [PosCabeza] = dir;
+			if (Longitud < MaxLong)
+				Longitud++;
 		}
 	}
 }
