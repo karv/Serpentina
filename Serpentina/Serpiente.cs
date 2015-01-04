@@ -10,11 +10,15 @@ namespace Structs
 
 		public override bool Equals (object obj)
 		{
-			if (typeof(obj) is Par<S, T>) {
+			if (obj is Par<S, T>) {
 				Par <S, T> cmp = (Par<S, T>)obj;
 				return x.Equals (cmp.x) && y.Equals (cmp.y);
 			}
 			return false;
+		}
+		public override int GetHashCode ()
+		{
+			return base.GetHashCode ();
 		}
 	}
 }
@@ -75,7 +79,7 @@ namespace Serpentina
 		/// Devuelve la posición de la cabeza de la serpiente.
 		/// </summary>
 		/// <value>The posición.</value>
-		public Tuple<int, int> Posición {
+		public Structs.Par<int, int> Posición {
 			get {
 				return _Pos;
 			}
@@ -95,13 +99,13 @@ namespace Serpentina
 		/// i = 0 => cabeza, i = 1 => cuello, etc.
 		/// </summary>
 		/// <param name="i">The index.</param>
-		public Tuple<int, int> Pos (int i) {
+		public Structs.Par<int, int> Pos (int i) {
 			if (i == 0)
 				return Posición;
 			if (i >= Longitud)
 				throw new IndexOutOfRangeException();
 
-			Tuple<int, int> ret = Pos (i - 1);
+			Structs.Par<int, int> ret = Pos (i - 1);
 			Serpiente tmp = Cola (i - 1);
 			enumDirecciónAbsoluta da = tmp.DirecciónAbsoluta;
 			
@@ -109,16 +113,16 @@ namespace Serpentina
 			// TODO: Convvertir a dir relativa
 			switch (_Historial[getIndexofPart(i)]) {
 			case enumDirecciónAbsoluta.Arriba:
-				ret.Item2 ++;
+				ret.y ++;
 				break;
 			case enumDirecciónAbsoluta.Abajo:
-				ret.Item2 --;
+				ret.y --;
 				break;
 			case enumDirecciónAbsoluta.Izquierda:
-				ret.Item1 ++;
+				ret.x ++;
 				break;
 			case enumDirecciónAbsoluta.Derecha:
-				ret.Item1 --;
+				ret.x --;
 				break;
 			}
 			return ret;
@@ -132,7 +136,7 @@ namespace Serpentina
 		public Serpiente Cola (int i)
 		{
 			Serpiente ret = new Serpiente (MaxLong);
-			ret._Historial = (enumDirecciónRelativa[])_Historial.Clone ();
+			ret._Historial = (enumDirecciónAbsoluta[])_Historial.Clone ();
 			ret.PosCabeza = i;
 			ret.Longitud = Longitud - i;
 			return ret;
@@ -151,14 +155,15 @@ namespace Serpentina
 		/// <param name="maxTamaño">Tamaño máximo de la serpiente</param>
 		public Serpiente (int maxTamaño)
 		{
-			_Historial = new enumDirecciónRelativa[maxTamaño];
+			_Historial = new enumDirecciónAbsoluta[maxTamaño];
+			MaxLong = maxTamaño;
 		}
 
 		/// <summary>
 		/// Avanza la serpiente hacia la dirección dir.
 		/// </summary>
 		/// <param name="dir">Dir.</param>
-		public void Avanzar (enumDirecciónRelativa dir)
+		public void Avanzar (enumDirecciónAbsoluta dir)
 		{
 			PosCabeza = (PosCabeza + 1) % MaxLong;
 			_Historial [PosCabeza] = dir;
