@@ -19,6 +19,11 @@ namespace Structs
 		{
 			return base.GetHashCode ();
 		}
+
+		public override string ToString ()
+		{
+			return string.Format ("(%0, %0)", x.ToString (), y.ToString ());
+		}
 	}
 }
 namespace Serpentina
