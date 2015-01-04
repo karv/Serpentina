@@ -2,7 +2,6 @@ using System;
 
 namespace Structs
 {
-	// TODO Cambiar Tuple <,> por Par <,>.
 	public struct Par <S, T>
 	{
 		public S x;
@@ -45,12 +44,9 @@ namespace Serpentina
 		enumDirecciónAbsoluta _dirección = enumDirecciónAbsoluta.Arriba;
 		Structs.Par<int, int> _Pos;
 
-		// TODO Cambiar historial de dir relativa a absoluta;  o bien, agragar variable que dice hacia dónde absolutamente se dirige la cabeza.
-		// De lo contrario, girar es un invariante.
-
 		enumDirecciónAbsoluta[] _Historial;
 		/// <summary>
-		/// Posición de la cabeza en el arreglo _dirección[];
+		/// Posición de la cabeza en el arreglo _Historial[];
 		/// </summary>
 		int PosCabeza = 0;
 
@@ -71,7 +67,12 @@ namespace Serpentina
 			}
 		}
 
-		public int getIndexofPart (int i) {
+		/// <summary>
+		/// Devuelve el índice de la i-ésima parte de la serpiente.
+		/// </summary>
+		/// <returns>The índice parte.</returns>
+		/// <param name="i">Índice de la parte con respecto a la (cabeza de la) serpiente</param>
+		public int ObtenerÍndiceParte (int i) {
 			return PosCabeza + i % MaxLong;
 		}
 
@@ -90,7 +91,7 @@ namespace Serpentina
 		/// <value>The dirección absoluta.</value>
 		public enumDirecciónAbsoluta DirecciónAbsoluta {
 			get {
-				return _dirección;
+				return _Historial [PosCabeza];
 			}
 		}
 
@@ -110,8 +111,7 @@ namespace Serpentina
 			enumDirecciónAbsoluta da = tmp.DirecciónAbsoluta;
 			
 
-			// TODO: Convvertir a dir relativa
-			switch (_Historial[getIndexofPart(i)]) {
+			switch (_Historial[ObtenerÍndiceParte(i)]) {
 			case enumDirecciónAbsoluta.Arriba:
 				ret.y ++;
 				break;
@@ -143,10 +143,13 @@ namespace Serpentina
 		}
 
 
-
+		/// <summary>
+		/// Devuelve el índice de la cola con respecto a la serpiente.
+		/// </summary>
+		/// <returns>The índice cola.</returns>
 		public int ObtenerÍndiceCola ()
 		{
-			return getIndexofPart (1 - Longitud);
+			return ObtenerÍndiceParte (1 - Longitud);
 		}
 
 		/// <summary>
