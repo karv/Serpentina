@@ -22,32 +22,40 @@ namespace Serpentina
 			Atrás = 2
 		}
 
-		enumDirecciónAbsoluta _dirección = enumDirecciónAbsoluta.Arriba;
-		Structs.Par<int, int> _Pos;
+//		enumDirecciónAbsoluta _dirección = enumDirecciónAbsoluta.Arriba;
+		Structs.Par<int, int> _Pos = new Structs.Par<int, int>();
 
-		enumDirecciónAbsoluta[] _Historial;
+		Structs.ArregloCíclico<enumDirecciónAbsoluta> _Historial;
+
 		/// <summary>
 		/// Posición de la cabeza en el arreglo _Historial[];
 		/// </summary>
-		int PosCabeza = 0;
+//		int PosCabeza {
+//			get {
+//				return _Historial.
+//			}
+//		}
 
 		/// <summary>
 		/// La longitud máxima de la serpiente permitido por la longitud del arreglo.
 		/// </summary>
-		readonly int MaxLong;
+		public int MaxLong {
+			get
+			{
+				return  _Historial.MaxTamaño;
+			}
+		}
 
-		int _Longitud = 1;
 		/// <summary>
 		/// La longitud actual de la serpiente.
 		/// </summary>
 		/// <value>The longitud.</value>
 		public int Longitud {
 			get {
-				return  
-					_Longitud;
+				return _Historial.Tamaño;
 			}
 			set {
-				_Longitud = Math.Min (Math.Max (value, 1), MaxLongitud);
+				_Historial.Tamaño = Math.Min (value, MaxLongitud);
 			}
 		}
 
@@ -67,14 +75,6 @@ namespace Serpentina
 			}
 		}
 
-		/// <summary>
-		/// Devuelve el índice de la i-ésima parte de la serpiente.
-		/// </summary>
-		/// <returns>The índice parte.</returns>
-		/// <param name="i">Índice de la parte con respecto a la (cabeza de la) serpiente</param>
-		public int ObtenerÍndiceParte (int i) {
-			return PosCabeza + i % MaxLong;
-		}
 
 		/// <summary>
 		/// Devuelve la posición de la cabeza de la serpiente.
@@ -91,7 +91,7 @@ namespace Serpentina
 		/// <value>The dirección absoluta.</value>
 		public enumDirecciónAbsoluta DirecciónAbsoluta {
 			get {
-				return _Historial [PosCabeza];
+				return _Historial [0];
 			}
 		}
 
@@ -111,7 +111,7 @@ namespace Serpentina
 			enumDirecciónAbsoluta da = tmp.DirecciónAbsoluta;
 			
 
-			switch (_Historial[ObtenerÍndiceParte(i)]) {
+			switch (_Historial[i]) {
 			case enumDirecciónAbsoluta.Arriba:
 				ret.y ++;
 				break;
@@ -136,8 +136,7 @@ namespace Serpentina
 		public Serpiente Cola (int i)
 		{
 			Serpiente ret = new Serpiente (MaxLong);
-			ret._Historial = (enumDirecciónAbsoluta[])_Historial.Clone ();
-			ret.PosCabeza = i;
+			ret._Historial = _Historial.Clone ();
 			ret.Longitud = Longitud - i;
 			return ret;
 		}
@@ -149,7 +148,7 @@ namespace Serpentina
 		/// <returns>The índice cola.</returns>
 		public int ObtenerÍndiceCola ()
 		{
-			return ObtenerÍndiceParte (1 - Longitud);
+			return 1 - Longitud;
 		}
 
 		/// <summary>
@@ -158,8 +157,7 @@ namespace Serpentina
 		/// <param name="maxTamaño">Tamaño máximo de la serpiente</param>
 		public Serpiente (int maxTamaño)
 		{
-			_Historial = new enumDirecciónAbsoluta[maxTamaño];
-			MaxLong = maxTamaño;
+			_Historial = new Structs.ArregloCíclico<enumDirecciónAbsoluta> (maxTamaño);
 		}
 
 		/// <summary>
@@ -168,10 +166,8 @@ namespace Serpentina
 		/// <param name="dir">Dir.</param>
 		public void Avanzar (enumDirecciónAbsoluta dir)
 		{
-			PosCabeza = (PosCabeza + 1) % MaxLong;
-			_Historial [PosCabeza] = dir;
-			if (Longitud < MaxLongitud)
-				Longitud++;
+			bool Despl = Longitud >= MaxLongitud;
+			_Historial.Agrega (dir, Despl);
 		}
 	}
 }

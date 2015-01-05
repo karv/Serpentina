@@ -93,6 +93,18 @@ namespace Structs
 				_Data [j] = value;
 			}		
 		}
+		/// <summary>
+		/// Agrega un elemento al final de la lista.
+		/// </summary>
+		/// <param name="x">Objeto a agregar</param>
+		/// <param name="Desplazar">Si es <c>true</c> no aumenta la longitud del arreglo</param>
+		public void Agrega (T x, bool Desplazar = true)
+		{
+			_Pos = (_Pos + 1) % MaxTamaño;
+			this [0] = x;
+			if (!Desplazar && Tamaño < MaxTamaño)
+				Tamaño++;
+		}
 
 		/// <summary>
 		/// Clona memberwise este objeto.
