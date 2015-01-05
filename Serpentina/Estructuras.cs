@@ -22,7 +22,7 @@ namespace Structs
 
 		public override string ToString ()
 		{
-			return string.Format ("(%0, %0)", x.ToString (), y.ToString ());
+			return string.Format ("({0}, {0})", x.ToString (), y.ToString ());
 		}
 
 		public Par (S a, T b)
