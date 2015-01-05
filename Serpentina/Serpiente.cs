@@ -107,11 +107,11 @@ namespace Serpentina
 				throw new IndexOutOfRangeException();
 
 			Structs.Par<int, int> ret = Pos (i - 1);
-			Serpiente tmp = Cola (i - 1);
-			enumDirecciónAbsoluta da = tmp.DirecciónAbsoluta;
+//			Serpiente tmp = Cola (i - 1);
+//			enumDirecciónAbsoluta da = tmp.DirecciónAbsoluta;
 			
 
-			switch (_Historial[i]) {
+			switch (_Historial[1 - i]) {
 			case enumDirecciónAbsoluta.Arriba:
 				ret.y ++;
 				break;
@@ -168,6 +168,22 @@ namespace Serpentina
 		{
 			bool Despl = Longitud >= MaxLongitud;
 			_Historial.Agrega (dir, Despl);
+
+			// recalcular posición
+			switch (dir) {
+			case enumDirecciónAbsoluta.Abajo:
+				Posición.y ++;
+				break;
+			case enumDirecciónAbsoluta.Arriba:
+				Posición.y --;
+				break;
+			case enumDirecciónAbsoluta.Izquierda:
+				Posición.x --;
+				break;
+			case enumDirecciónAbsoluta.Derecha:
+				Posición.x ++;
+				break;
+			}
 		}
 	}
 }
