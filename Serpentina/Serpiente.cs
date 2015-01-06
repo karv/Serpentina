@@ -103,10 +103,10 @@ namespace Serpentina
 		public Structs.Par<int, int> Pos (int i) {
 			if (i == 0)
 				return Posición;
-			if (i >= Longitud)
+			if (i > Longitud)
 				throw new IndexOutOfRangeException();
 
-			Structs.Par<int, int> ret = Pos (i - 1);
+			Structs.Par<int, int> ret = Pos (i - 1).Clone();
 //			Serpiente tmp = Cola (i - 1);
 //			enumDirecciónAbsoluta da = tmp.DirecciónAbsoluta;
 			
