@@ -11,11 +11,12 @@ namespace Serpentina
 		public const char fg = 'x';
 		public override void Avanzar (enumDirecciónAbsoluta dir)
 		{
-			Structs.Par<int, int> PosTmp = Pos (Longitud - 1); 	// Obtiene la posición de la cola.
+			Structs.Par<int, int> PosTmp;
 			bool Despl = Longitud >= MaxLongitud;
 
 			if (Despl) {	// Borrar sólo si se está desplazando y no creciendo.
 
+				PosTmp = Pos (Longitud); 	// Obtiene la posición de la cola.
 				Console.CursorLeft = PosTmp.x;
 				Console.CursorTop = PosTmp.y;
 				Console.Write (bg);
@@ -30,6 +31,17 @@ namespace Serpentina
 			Console.Write (fg);
 
 
+		}
+
+		public void Dibujar ()
+		{
+			Structs.Par<int, int> PosTmp;
+			for (int i = 0; i <= Longitud; i++) {
+				PosTmp = Pos (i); 	// Obtiene la posición de la cabeza
+				Console.CursorLeft = PosTmp.x;
+				Console.CursorTop = PosTmp.y;					
+				Console.Write (fg);
+			}
 		}
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Serpentina.SerpienteConsola"/> class.
