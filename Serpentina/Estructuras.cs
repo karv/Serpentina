@@ -57,10 +57,9 @@ namespace Structs
         /// <summary>
         /// Crea una instancia a partir de sus esquinas opestas.
         /// </summary>
-        public Rectángulo(S nx1, T ny1, S nx2, T ny2) : base(new Par<S,T>(nx1, ny1), new Par<S,T> (nx2, ny2))
-        {
+        public Rectángulo(S nx1, T ny1, S nx2, T ny2) : base(new Par<S,T>(nx1, ny1), new Par<S,T> (nx2, ny2)) {}
+        public Rectángulo() : base(new Par<S,T>(), new Par<S,T>()) {}
 
-        }        
     }
     /// <summary>
     /// Representa un rectángulo de coordenadas enteras.
@@ -76,6 +75,10 @@ namespace Structs
         {
             return (x1 <= p.x && p.x <= x2 && y1 <= p.y && p.y <= y2);
         }
+
+        //ctors
+        public RectánguloInt(int nx1, int ny1, int nx2, int ny2) : base (nx1, ny1, nx2, ny2){}
+        public RectánguloInt() {}
     }
 
 }

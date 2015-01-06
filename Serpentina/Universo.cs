@@ -22,7 +22,7 @@ namespace Serpentina
         /// <summary>
         /// Representa el área del juego.
         /// </summary>
-        public Rectángulo<int, int> Área;
+        public RectánguloInt Área = new RectánguloInt();
 
         /// <summary>
         /// Ejecuta el juego.
@@ -32,14 +32,30 @@ namespace Serpentina
             Tiempo.Temporalizador Tempo = new Tiempo.Temporalizador();  //El temporalizador del juego.
             Tempo.Timer = TimeSpan.FromSeconds(1);
 
+            List<Serpiente> Muertos = new List<Serpiente>();
+
             while (true)
             {
                 Tempo.Reestablecer();
 
                 foreach (Serpiente x in Jugadores)
                 {
-                    x.Avanzar(x.DirecciónAbsoluta);
+                    x.Avanzar(Serpiente.enumDirecciónAbsoluta.Derecha);
+
+                    Console.WriteLine(x.Posición.ToString());
+
+                    // Mueren los que se salen
+                    if (!Área.PuntoDentro(x.Posición)) Muertos.Add(x);  // Promesa de muerte.
                 }
+
+                // Matar a los que se les promete muerte
+                foreach (Serpiente x in Muertos)
+                {
+                    Jugadores.Remove(x);
+                    Console.WriteLine("Muere " + x.ToString());
+
+                }
+                Muertos.Clear();
 
                 Tempo.EsperaFlag(); //Espera a que pase un segundo desde el inicio del ciclo.
             }

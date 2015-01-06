@@ -41,7 +41,7 @@ namespace Tiempo
         /// <returns></returns>
         public bool FlagCiclo()
         {
-            return _Inicio.Add(_Timer) >= DateTime.Now;
+            return _Inicio.Add(_Timer) < DateTime.Now;
         }
         /// <summary>
         /// Paraliza hasta que FlagInicio() sae <c>true</c>.
