@@ -22,7 +22,7 @@ namespace Serpentina
         /// <summary>
         /// Representa el área del juego.
         /// </summary>
-        public RectánguloInt Área = new RectánguloInt();
+        public RectanguloInt Área = new RectanguloInt();
 
         /// <summary>
         /// Ejecuta el juego.
