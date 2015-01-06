@@ -33,6 +33,11 @@ namespace Structs
         public Par()
         {
         }
+
+		public Par<S, T> Clone ()
+		{
+			return new Par<S, T> (x, y);
+		}
 	}
 
     public class Rectangulo<S, T> : Par<Par<S, T>,Par<S,T>>
