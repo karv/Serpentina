@@ -29,9 +29,19 @@ namespace Serpentina
         /// </summary>
         public void Run()
         {
+            Tiempo.Temporalizador Tempo = new Tiempo.Temporalizador();  //El temporalizador del juego.
+            Tempo.Timer = TimeSpan.FromSeconds(1);
+
             while (true)
             {
-                
+                Tempo.Reestablecer();
+
+                foreach (Serpiente x in Jugadores)
+                {
+                    x.Avanzar(x.DirecciónAbsoluta);
+                }
+
+                Tempo.EsperaFlag(); //Espera a que pase un segundo desde el inicio del ciclo.
             }
         }
         
