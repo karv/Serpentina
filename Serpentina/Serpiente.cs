@@ -171,17 +171,17 @@ namespace Serpentina
 
 			// recalcular posición
 			switch (dir) {
-			case enumDirecciónAbsoluta.Abajo:
-				Posición.y ++;
+			case enumDirecciónAbsoluta.Abajo: 
+                _Pos.y++;
 				break;
-			case enumDirecciónAbsoluta.Arriba:
-				Posición.y --;
+			case enumDirecciónAbsoluta.Arriba: 
+                _Pos.y --;
 				break;
 			case enumDirecciónAbsoluta.Izquierda:
-				Posición.x --;
+				_Pos.x --;
 				break;
 			case enumDirecciónAbsoluta.Derecha:
-				Posición.x ++;
+				_Pos.x ++;
 				break;
 			}
 		}
