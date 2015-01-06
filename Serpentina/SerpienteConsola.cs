@@ -12,9 +12,14 @@ namespace Serpentina
 		public override void Avanzar (enumDirecciónAbsoluta dir)
 		{
 			Structs.Par<int, int> PosTmp = Pos (Longitud - 1); 	// Obtiene la posición de la cola.
-			Console.CursorLeft = PosTmp.x;
-			Console.CursorTop = PosTmp.y;
-			Console.Write (bg);
+			bool Despl = Longitud >= MaxLongitud;
+
+			if (Despl) {	// Borrar sólo si se está desplazando y no creciendo.
+
+				Console.CursorLeft = PosTmp.x;
+				Console.CursorTop = PosTmp.y;
+				Console.Write (bg);
+			}
 
 			base.Avanzar (dir);
 
