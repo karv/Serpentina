@@ -54,10 +54,29 @@ namespace Structs
             get { return y.y; }
         }
 
+        /// <summary>
+        /// Crea una instancia a partir de sus esquinas opestas.
+        /// </summary>
         public Rectángulo(S nx1, T ny1, S nx2, T ny2) : base(new Par<S,T>(nx1, ny1), new Par<S,T> (nx2, ny2))
         {
 
+        }        
+    }
+    /// <summary>
+    /// Representa un rectángulo de coordenadas enteras.
+    /// </summary>
+    public class RectánguloInt : Rectángulo<int, int>
+    {
+        /// <summary>
+        /// Devuelve <c>true</c> si un punto específico está dentro del rectángulo
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public bool PuntoDentro(Par<int, int> p)
+        {
+            return (x1 <= p.x && p.x <= x2 && y1 <= p.y && p.y <= y2);
         }
     }
+
 }
 
