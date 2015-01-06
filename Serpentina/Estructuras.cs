@@ -33,9 +33,14 @@ namespace Structs
         public Par()
         {
         }
+
+		public Par<S, T> Clone ()
+		{
+			return new Par<S, T> (x, y);
+		}
 	}
 
-    public class Rectángulo<S, T> : Par<Par<S, T>,Par<S,T>>
+    public class Rectangulo<S, T> : Par<Par<S, T>,Par<S,T>>
     {
         public S x1
         {
@@ -57,14 +62,14 @@ namespace Structs
         /// <summary>
         /// Crea una instancia a partir de sus esquinas opestas.
         /// </summary>
-        public Rectángulo(S nx1, T ny1, S nx2, T ny2) : base(new Par<S,T>(nx1, ny1), new Par<S,T> (nx2, ny2)) {}
-        public Rectángulo() : base(new Par<S,T>(), new Par<S,T>()) {}
+        public Rectangulo(S nx1, T ny1, S nx2, T ny2) : base(new Par<S,T>(nx1, ny1), new Par<S,T> (nx2, ny2)) {}
+        public Rectangulo() : base(new Par<S,T>(), new Par<S,T>()) {}
 
     }
     /// <summary>
     /// Representa un rectángulo de coordenadas enteras.
     /// </summary>
-    public class RectánguloInt : Rectángulo<int, int>
+    public class RectanguloInt : Rectangulo<int, int>
     {
         /// <summary>
         /// Devuelve <c>true</c> si un punto específico está dentro del rectángulo
@@ -77,8 +82,8 @@ namespace Structs
         }
 
         //ctors
-        public RectánguloInt(int nx1, int ny1, int nx2, int ny2) : base (nx1, ny1, nx2, ny2){}
-        public RectánguloInt() {}
+        public RectanguloInt(int nx1, int ny1, int nx2, int ny2) : base (nx1, ny1, nx2, ny2){}
+        public RectanguloInt() {}
     }
 
 }

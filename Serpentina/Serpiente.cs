@@ -103,10 +103,10 @@ namespace Serpentina
 		public Structs.Par<int, int> Pos (int i) {
 			if (i == 0)
 				return Posición;
-			if (i >= Longitud)
+			if (i > Longitud)
 				throw new IndexOutOfRangeException();
 
-			Structs.Par<int, int> ret = Pos (i - 1);
+			Structs.Par<int, int> ret = Pos (i - 1).Clone();
 //			Serpiente tmp = Cola (i - 1);
 //			enumDirecciónAbsoluta da = tmp.DirecciónAbsoluta;
 			
@@ -135,7 +135,7 @@ namespace Serpentina
 		/// <param name="i">Índice de la cabeza de la nueva serpiente.</param>
 		public Serpiente Cola (int i)
 		{
-			Serpiente ret = new Serpiente (MaxLong);
+			Serpiente ret = new Serpiente (MaxLong, 0, 0);
 			ret._Historial = _Historial.Clone ();
 			ret.Longitud = Longitud - i;
 			return ret;
@@ -155,16 +155,18 @@ namespace Serpentina
 		/// Initializes a new instance of the <see cref="Serpentina.Serptiente"/> class.
 		/// </summary>
 		/// <param name="maxTamaño">Tamaño máximo de la serpiente</param>
-		public Serpiente (int maxTamaño)
+		public Serpiente (int maxTamaño, int x, int y)
 		{
 			_Historial = new Structs.ArregloCíclico<enumDirecciónAbsoluta> (maxTamaño);
+			_Pos.x = x;
+			_Pos.y = y;
 		}
 
 		/// <summary>
 		/// Avanza la serpiente hacia la dirección dir.
 		/// </summary>
 		/// <param name="dir">Dir.</param>
-		public void Avanzar (enumDirecciónAbsoluta dir)
+		public virtual void Avanzar (enumDirecciónAbsoluta dir)
 		{
 			bool Despl = Longitud >= MaxLongitud;
 			_Historial.Agrega (dir, Despl);

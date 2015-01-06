@@ -40,6 +40,7 @@
     <Compile Include="Estructuras.cs" />
     <Compile Include="ArregloCíclico.cs" />
     <Compile Include="Serpiente.cs" />
+    <Compile Include="SerpienteConsola.cs" />
     <Compile Include="Universo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
