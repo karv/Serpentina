@@ -73,7 +73,7 @@ namespace Serpentina
 		}
    
 
-		public Color clr;
+		public Color clr = new Color();
 
 		
 		
@@ -107,7 +107,9 @@ namespace Serpentina
 			for (int i = 0; i <= Longitud; i++) {
 				PosTmp = Pos (i); 	// Obtiene la posición de la cabeza
 				Console.CursorLeft = PosTmp.x;
-				Console.CursorTop = PosTmp.y;					
+				Console.CursorTop = PosTmp.y;
+				Console.BackgroundColor = clr.bgc;
+				Console.ForegroundColor = clr.fgc;
 				Console.Write (clr.fg);
 			}
 		}
