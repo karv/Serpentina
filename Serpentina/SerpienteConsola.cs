@@ -7,8 +7,11 @@ namespace Serpentina
 	/// </summary>
 	public class SerpienteConsola:Serpiente
 	{
-		public const char bg = ' ';
-		public const char fg = 'x';
+
+		public Opciones.Color clr = new Opciones.Color();
+
+		
+		
 		public override void Avanzar (enumDirecciónAbsoluta dir)
 		{
 			Structs.Par<int, int> PosTmp;
@@ -19,7 +22,7 @@ namespace Serpentina
 				PosTmp = Pos (Longitud); 	// Obtiene la posición de la cola.
 				Console.CursorLeft = PosTmp.x;
 				Console.CursorTop = PosTmp.y;
-				Console.Write (bg);
+				Console.Write (clr.bg);
 			}
 
 			base.Avanzar (dir);
@@ -28,7 +31,7 @@ namespace Serpentina
 
 			Console.CursorLeft = PosTmp.x;
 			Console.CursorTop = PosTmp.y;
-			Console.Write (fg);
+			Console.Write (clr.fg);
 
 
 		}
@@ -39,8 +42,10 @@ namespace Serpentina
 			for (int i = 0; i <= Longitud; i++) {
 				PosTmp = Pos (i); 	// Obtiene la posición de la cabeza
 				Console.CursorLeft = PosTmp.x;
-				Console.CursorTop = PosTmp.y;					
-				Console.Write (fg);
+				Console.CursorTop = PosTmp.y;
+				Console.BackgroundColor = clr.bgc;
+				Console.ForegroundColor = clr.fgc;
+				Console.Write (clr.fg);
 			}
 		}
 		/// <summary>
@@ -49,8 +54,10 @@ namespace Serpentina
 		/// <param name="MaxTamaño">Tamaño máximo (por memoria).</param>
 		/// <param name="x">Posición x inicial</param>
 		/// <param name="y">Posición y inicial</param>
-		public SerpienteConsola (int MaxTamaño, int x, int y):base(MaxTamaño,x,y) {}
-			
+		public SerpienteConsola (int MaxTamaño, int x, int y):base(MaxTamaño,x,y) 
+		{
+			clr.OnCambio += Dibujar;
+		}
 
 	}
 }

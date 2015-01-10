@@ -22,12 +22,12 @@ namespace Serpentina
         /// <summary>
         /// Representa el área del juego.
         /// </summary>
-        public RectanguloInt Área = new RectanguloInt();
+        public RectanguloInt Area = new RectanguloInt();
 
         /// <summary>
         /// Ejecuta el juego.
         /// </summary>
-        public void Run()
+        public virtual void Run()
         {
             Tiempo.Temporalizador Tempo = new Tiempo.Temporalizador();  //El temporalizador del juego.
             Tempo.Timer = TimeSpan.FromSeconds(1);
@@ -40,12 +40,20 @@ namespace Serpentina
 
                 foreach (Serpiente x in Jugadores)
                 {
-                    x.Avanzar(Serpiente.enumDirecciónAbsoluta.Derecha);
+                    Serpiente.enumDirecciónAbsoluta dir = Serpiente.enumDirecciónAbsoluta.Derecha;
 
-                    Console.WriteLine(x.Posición.ToString());
+                    if (ObjetoEn(x.ObtenerPosiciónFutura(dir)) != null)
+                        // Chocó con algo.
+                        Muertos.Add(x);
+                    else
+                    {
+                        x.Avanzar(dir);
 
-                    // Mueren los que se salen
-                    if (!Área.PuntoDentro(x.Posición)) Muertos.Add(x);  // Promesa de muerte.
+                        // Console.WriteLine(x.Posición.ToString());
+
+                        // Mueren los que se salen
+                        if (!Area.PuntoDentro(x.Posición)) Muertos.Add(x);  // Promesa de muerte.
+                    }
                 }
 
                 // Matar a los que se les promete muerte
@@ -55,11 +63,26 @@ namespace Serpentina
                     Console.WriteLine("Muere " + x.ToString());
 
                 }
-                Muertos.Clear();
+                Muertos.Clear();                
 
                 Tempo.EsperaFlag(); //Espera a que pase un segundo desde el inicio del ciclo.
             }
         }
-        
+
+        /// <summary>
+        /// Devuelve el objeto que se encuentra en una posición fija.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public object ObjetoEn (Structs.Par<int, int> p)
+        {
+            // ¿Es serpiente?
+            foreach (Serpiente x in Jugadores)
+            {
+                if (x.ContienePos(p)) return x;
+            }
+            
+            return null;
+        }
     }
 }
