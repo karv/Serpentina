@@ -9,6 +9,7 @@ namespace Serpentina
     /// </summary>
     public class Universo
     {
+        public event Action<Serpiente> OnMuerte;
         List<Serpiente> _Jugadores = new List<Serpiente>();
         
         /// <summary>
@@ -30,7 +31,7 @@ namespace Serpentina
         public virtual void Run()
         {
             Tiempo.Temporalizador Tempo = new Tiempo.Temporalizador();  //El temporalizador del juego.
-            Tempo.Timer = TimeSpan.FromSeconds(1);
+            Tempo.Timer = TimeSpan.FromSeconds(0.3);
 
             List<Serpiente> Muertos = new List<Serpiente>();
 
@@ -38,9 +39,9 @@ namespace Serpentina
             {
                 Tempo.Reestablecer();
 
+                Serpiente.enumDirecciónAbsoluta dir = Serpiente.enumDirecciónAbsoluta.Derecha;
                 foreach (Serpiente x in Jugadores)
                 {
-                    Serpiente.enumDirecciónAbsoluta dir = Serpiente.enumDirecciónAbsoluta.Derecha;
 
                     if (ObjetoEn(x.ObtenerPosiciónFutura(dir)) != null)
                         // Chocó con algo.
@@ -59,9 +60,8 @@ namespace Serpentina
                 // Matar a los que se les promete muerte
                 foreach (Serpiente x in Muertos)
                 {
+                    OnMuerte.Invoke(x);
                     Jugadores.Remove(x);
-                    Console.WriteLine("Muere " + x.ToString());
-
                 }
                 Muertos.Clear();                
 

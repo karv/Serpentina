@@ -147,10 +147,11 @@ namespace Serpentina
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Serpentina.Serptiente"/> class.
 		/// </summary>
-		/// <param name="maxTamaño">Tamaño máximo de la serpiente</param>
-		public Serpiente (int maxTamaño, int x, int y)
-		{
-			_Historial = new Structs.ArregloCíclico<enumDirecciónAbsoluta> (maxTamaño);
+		/// <param name="MaxTamaño">Tamaño máximo de la serpiente</param>
+		public Serpiente (int MaxTamaño, int x, int y)
+		{            
+            _MaxLongitud = MaxTamaño;
+			_Historial = new Structs.ArregloCíclico<enumDirecciónAbsoluta> (MaxTamaño);
 			_Pos.x = x;
 			_Pos.y = y;
 		}

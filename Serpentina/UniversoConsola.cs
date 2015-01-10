@@ -11,6 +11,7 @@ namespace Serpentina
 		public UniversoConsola ()
 		{
 			ColorBorde.OnCambio += DibujaArea;
+            OnMuerte += AlMorir;
 			Area = new Structs.RectanguloInt (1, 1, Console.BufferWidth - 2, Console.BufferHeight - 2);
 		}
 
@@ -42,6 +43,14 @@ namespace Serpentina
 				x.Dibujar ();
 			}
 		}
+
+        void AlMorir (Serpiente x)
+        {
+            SerpienteConsola y = (SerpienteConsola)x;
+            y.Borrar();     // Debe marcar error si no es SerpienteConsola.
+
+            ConsoleExt.ConsoleExt.Poner(string.Format("Muere {0}.", y), 1, 20, y.clr);
+        }
 	}
 }
 

@@ -7,33 +7,25 @@ namespace Serpentina
 		public static void Main (string[] args)
 		{
 			SerpienteConsola s = new SerpienteConsola (10, 10, 10);
+            SerpienteConsola s2 = new SerpienteConsola(10, 10, 100);
 
 			s.MaxLongitud = 7;
-            Universo U = new Universo();
-            U.羠ea = new Structs.Rect醤guloInt(0, 0, 40, 40);
+            UniversoConsola U = new UniversoConsola();
+            U.Area = new Structs.RectanguloInt(1, 1, 40, 40);
 
             s.Posici髇.x = 3;
             s.Posici髇.y = 3;
+            s2.Posici髇.x = 7;
+            s2.Posici髇.y = 3;
+            s.clr.fgc = ConsoleColor.White;
+            s2.clr.fgc = ConsoleColor.Cyan;
 
             U.Jugadores.Add(s);
-			s.Dibujar ();
+            U.Jugadores.Add(s2);
 
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Derecha);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Derecha);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Derecha);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Derecha);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Derecha);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Derecha);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Arriba);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Arriba);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Arriba);
-			s.Avanzar (Serpiente.enumDirecci贸nAbsoluta.Arriba);	
-
-			Console.ReadLine ();
-
+            U.Dibuja();
 
             U.Run();
-
 		}
 	}
 }
