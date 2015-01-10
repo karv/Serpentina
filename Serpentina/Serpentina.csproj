@@ -42,6 +42,8 @@
     <Compile Include="Serpiente.cs" />
     <Compile Include="SerpienteConsola.cs" />
     <Compile Include="Universo.cs" />
+    <Compile Include="UniversoConsola.cs" />
+    <Compile Include="ConsoleExten.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
