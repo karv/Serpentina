@@ -31,7 +31,7 @@ namespace Serpentina
         public virtual void Run()
         {
             Tiempo.Temporalizador Tempo = new Tiempo.Temporalizador();  //El temporalizador del juego.
-            Tempo.Timer = TimeSpan.FromSeconds(0.3);
+            Tempo.Timer = TimeSpan.FromSeconds(0.15);
 
             List<Serpiente> Muertos = new List<Serpiente>();
 
@@ -39,18 +39,22 @@ namespace Serpentina
             {
                 Tempo.Reestablecer();
 
-                Serpiente.enumDirecciónAbsoluta dir = Serpiente.enumDirecciónAbsoluta.Derecha;
+				// Key Binding
+
+
+
+
+
+				Serpiente.enumDirecciónAbsoluta dir;
                 foreach (Serpiente x in Jugadores)
                 {
-
+					dir = x.DireccionActual;
                     if (ObjetoEn(x.ObtenerPosiciónFutura(dir)) != null)
                         // Chocó con algo.
                         Muertos.Add(x);
                     else
                     {
                         x.Avanzar(dir);
-
-                        // Console.WriteLine(x.Posición.ToString());
 
                         // Mueren los que se salen
                         if (!Area.PuntoDentro(x.Posicion)) Muertos.Add(x);  // Promesa de muerte.
@@ -65,7 +69,7 @@ namespace Serpentina
                 }
                 Muertos.Clear();                
 
-                Tempo.EsperaFlag(); //Espera a que pase un segundo desde el inicio del ciclo.
+                Tempo.EsperaFlag(AtrapaTeclas); //Espera a que pase un segundo desde el inicio del ciclo.
             }
         }
 
@@ -84,5 +88,31 @@ namespace Serpentina
             
             return null;
         }
+
+		/// <summary>
+		/// Atrapa la entrada de teclas de consola.
+		/// </summary>
+		public void AtrapaTeclas ()
+		{
+			ConsoleKeyInfo CKI;
+			if (Console.KeyAvailable) {
+				CKI = Console.ReadKey ();
+
+				switch (CKI.Key) {
+				case ConsoleKey.UpArrow:
+					Jugadores [0].DireccionActual = Serpiente.enumDirecciónAbsoluta.Arriba;
+					break;
+				case ConsoleKey.DownArrow:
+					Jugadores [0].DireccionActual = Serpiente.enumDirecciónAbsoluta.Abajo;
+					break;
+				case ConsoleKey.LeftArrow:
+					Jugadores [0].DireccionActual = Serpiente.enumDirecciónAbsoluta.Izquierda;
+					break;
+				case ConsoleKey.RightArrow:
+					Jugadores [0].DireccionActual = Serpiente.enumDirecciónAbsoluta.Derecha;
+					break;
+				}
+			}
+		}
     }
 }

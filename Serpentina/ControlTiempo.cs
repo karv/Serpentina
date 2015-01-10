@@ -44,14 +44,21 @@ namespace Tiempo
             return _Inicio.Add(_Timer) < DateTime.Now;
         }
         /// <summary>
-        /// Paraliza hasta que FlagInicio() sae <c>true</c>.
+        /// Paraliza hasta que FlagInicio() sea <c>true</c>.
         /// </summary>
         public void EsperaFlag()
         {
-            while (!FlagCiclo())
-            {                
-            }
+			while (!FlagCiclo()) {}
         }
-
+		/// <summary>
+		/// Paraliza hasta que FlagInicio() sea <c>true</c>.
+		/// </summary>
+		/// <param name="Mientras">Ejecutar en la espera.</param>
+		public void EsperaFlag (Action Mientras)
+		{
+			while (!FlagCiclo()) {
+				Mientras.Invoke ();
+			}
+		}
     }
 }

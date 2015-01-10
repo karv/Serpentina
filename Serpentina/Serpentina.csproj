@@ -44,6 +44,7 @@
     <Compile Include="Universo.cs" />
     <Compile Include="UniversoConsola.cs" />
     <Compile Include="ConsoleExten.cs" />
+    <Compile Include="enumAccion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

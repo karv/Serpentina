@@ -8,26 +8,32 @@ namespace Serpentina
 	{
 		public enum enumDirecciónAbsoluta
 		{
+			noDir = 0,
 			Arriba = 1,
 			Izquierda = -2,
 			Abajo = -1,
 			Derecha = 2
 		}
 
+		enumDirecciónAbsoluta _DireccionActual = enumDirecciónAbsoluta.noDir;
+
+		/// <summary>
+		/// Devuelve o establece la dirección en la que pretende moverse.
+		/// </summary>
+		/// <value>La dirección actual.</value>
+		public enumDirecciónAbsoluta DireccionActual {
+			get {
+				return (_DireccionActual == enumDirecciónAbsoluta.noDir) ? _Historial[0] : _DireccionActual;
+			}
+			set {
+				_DireccionActual = value;
+			}
+		}
 
 //		enumDirecciónAbsoluta _dirección = enumDirecciónAbsoluta.Arriba;
 		Structs.Par<int, int> _Pos = new Structs.Par<int, int>();
 
 		Structs.ArregloCíclico<enumDirecciónAbsoluta> _Historial;
-
-		/// <summary>
-		/// Posición de la cabeza en el arreglo _Historial[];
-		/// </summary>
-//		int PosCabeza {
-//			get {
-//				return _Historial.
-//			}
-//		}
 
 		/// <summary>
 		/// La longitud máxima de la serpiente permitido por la longitud del arreglo.
@@ -78,6 +84,8 @@ namespace Serpentina
 				return _Pos;
 			}
 		}
+
+		[Obsolete("Mejor use DirecciónActual.")]
 		/// <summary>
 		/// Devuelve la dirección absoluta de la cabeza.
 		/// </summary>
@@ -182,7 +190,15 @@ namespace Serpentina
 			}
 		}
 
-        /// <summary>
+		/// <summary>
+		/// Avanza la serpiente hacia la dirección <c>DireccionActual</c>.
+		/// </summary>
+		public virtual void Avanzar ()
+		{
+			Avanzar (DireccionActual);
+		}
+
+		/// <summary>
         /// Devuelve <c>true</c> sólo si esta serpiente intersecta el punto <c>p</c>.
         /// </summary>
         /// <param name="p">Un punto en Consola.</param>
