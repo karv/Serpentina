@@ -7,73 +7,8 @@ namespace Serpentina
 	/// </summary>
 	public class SerpienteConsola:Serpiente
 	{
-		public class Color
-		{
-			char _bg = ' ';								// Texto de fondo
-			char _fg = 'x';  							// Texto de dibujo
-			ConsoleColor _bgc = ConsoleColor.Black; 	// Color de fondo
-			ConsoleColor _fgc = ConsoleColor.Green; 	// Color de frente
-			public event Action OnCambio;
 
-			/// <summary>
-			/// Char de fondo
-			/// </summary>
-			/// <value>The background.</value>
-			public char bg {
-				get {
-					return _bg;
-				}
-				set {
-					_bg = value;
-					OnCambio.Invoke ();
-				}
-			}
-
-			/// <summary>
-			/// Char de frente
-			/// </summary>
-			/// <value>The background.</value>
-			public char fg {
-				get {
-					return _fg;
-				}
-				set {
-					_fg = value;
-					OnCambio.Invoke ();
-				}
-			}
-
-			/// <summary>
-			/// Color de fondo
-			/// </summary>
-			/// <value>The bgc.</value>
-			public ConsoleColor bgc  {
-				get {
-					return _bgc;
-				}
-				set {
-					_bgc = value;
-					OnCambio.Invoke ();
-				}
-			}
-
-			/// <summary>
-			/// Color de frente.
-			/// </summary>
-			/// <value>The fgc.</value>
-			public ConsoleColor fgc  {
-				get {
-					return _fgc;
-				}
-				set {
-					_fgc = value;
-					OnCambio.Invoke ();
-				}
-			}
-		}
-   
-
-		public Color clr = new Color();
+		public Opciones.Color clr = new Opciones.Color();
 
 		
 		

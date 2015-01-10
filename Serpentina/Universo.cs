@@ -22,12 +22,12 @@ namespace Serpentina
         /// <summary>
         /// Representa el área del juego.
         /// </summary>
-        public RectanguloInt Área = new RectanguloInt();
+        public RectanguloInt Area = new RectanguloInt();
 
         /// <summary>
         /// Ejecuta el juego.
         /// </summary>
-        public void Run()
+        public virtual void Run()
         {
             Tiempo.Temporalizador Tempo = new Tiempo.Temporalizador();  //El temporalizador del juego.
             Tempo.Timer = TimeSpan.FromSeconds(1);
@@ -45,7 +45,7 @@ namespace Serpentina
                     Console.WriteLine(x.Posición.ToString());
 
                     // Mueren los que se salen
-                    if (!Área.PuntoDentro(x.Posición)) Muertos.Add(x);  // Promesa de muerte.
+                    if (!Area.PuntoDentro(x.Posición)) Muertos.Add(x);  // Promesa de muerte.
                 }
 
                 // Matar a los que se les promete muerte
