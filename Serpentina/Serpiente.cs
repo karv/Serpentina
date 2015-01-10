@@ -180,5 +180,41 @@ namespace Serpentina
 				break;
 			}
 		}
+
+        /// <summary>
+        /// Devuelve <c>true</c> sólo si esta serpiente intersecta el punto <c>p</c>.
+        /// </summary>
+        /// <param name="p">Un punto en Consola.</param>
+        /// <returns></returns>
+        public bool ContienePos (Structs.Par<int, int> p)
+        {
+            for (int i = 0; i < Longitud; i++)
+            {
+                if (Pos(i).Equals(p)) return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Devuelve la posición que tendría la cabeza si avanzara hacia <c>dir</c>
+        /// </summary>
+        /// <param name="dir">Dirección.</param>
+        /// <returns></returns>
+        public Structs.Par<int, int> ObtenerPosiciónFutura (enumDirecciónAbsoluta dir)
+        {
+            switch (dir)
+            {
+            case enumDirecciónAbsoluta.Abajo:
+                    return new Structs.Par<int, int>(_Pos.x, _Pos.y + 1);
+            case enumDirecciónAbsoluta.Arriba:
+                    return new Structs.Par<int, int>(_Pos.x, _Pos.y - 1);
+            case enumDirecciónAbsoluta.Derecha:
+                    return new Structs.Par<int, int>(_Pos.x + 1, _Pos.y);
+            case enumDirecciónAbsoluta.Izquierda:
+                    return new Structs.Par<int, int>(_Pos.x - 1, _Pos.y);
+            default:
+                    return null;
+            }
+        }
 	}
 }
