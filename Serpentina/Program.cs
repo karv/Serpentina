@@ -13,10 +13,10 @@ namespace Serpentina
             UniversoConsola U = new UniversoConsola();
             U.Area = new Structs.RectanguloInt(1, 1, 40, 40);
 
-            s.Posición.x = 3;
-            s.Posición.y = 3;
-            s2.Posición.x = 7;
-            s2.Posición.y = 3;
+            s.Posicion.x = 3;
+            s.Posicion.y = 3;
+            s2.Posicion.x = 7;
+            s2.Posicion.y = 3;
             s.clr.fgc = ConsoleColor.White;
             s2.clr.fgc = ConsoleColor.Cyan;
 

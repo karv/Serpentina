@@ -53,7 +53,7 @@ namespace Serpentina
                         // Console.WriteLine(x.Posición.ToString());
 
                         // Mueren los que se salen
-                        if (!Area.PuntoDentro(x.Posición)) Muertos.Add(x);  // Promesa de muerte.
+                        if (!Area.PuntoDentro(x.Posicion)) Muertos.Add(x);  // Promesa de muerte.
                     }
                 }
 

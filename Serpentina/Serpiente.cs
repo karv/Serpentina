@@ -73,7 +73,7 @@ namespace Serpentina
 		/// Devuelve la posición de la cabeza de la serpiente.
 		/// </summary>
 		/// <value>The posición.</value>
-		public Structs.Par<int, int> Posición {
+		public Structs.Par<int, int> Posicion {
 			get {
 				return _Pos;
 			}
@@ -95,7 +95,7 @@ namespace Serpentina
 		/// <param name="i">The index.</param>
 		public Structs.Par<int, int> Pos (int i) {
 			if (i == 0)
-				return Posición;
+				return Posicion;
 			if (i > Longitud)
 				throw new IndexOutOfRangeException();
 
