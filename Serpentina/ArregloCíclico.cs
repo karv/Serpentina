@@ -1,4 +1,4 @@
-using System;
+	using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -86,6 +86,8 @@ namespace Structs
 		{
 			get {
 				int j = (i + _Pos) % MaxTamaño;
+				if (j < 0)
+					j += MaxTamaño; 	// Tomar el menor residuo positivo. TODO: ¿No hay una func que lo haga en un sólo paso?
 				return _Data [j];
 			}
 			set {
