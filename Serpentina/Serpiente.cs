@@ -158,27 +158,7 @@ namespace Serpentina
 			_Historial = new Structs.ArregloCíclico<enumDirecciónAbsoluta> (MaxTamaño);
 			_Pos.x = x;
 			_Pos.y = y;
-			clr.OnCambio += Dibujar;
-		}
-
-		/// <summary>
-		/// Avanza la serpiente hacia la dirección dir.
-		/// </summary>
-		/// <param name="dir">Dir.</param>
-		public virtual void Avanzar (enumDirecciónAbsoluta dir)
-		{
-
-
-
-		
-		}
-
-		/// <summary>
-		/// Avanza la serpiente hacia la dirección <c>DireccionActual</c>.
-		/// </summary>
-		public virtual void Avanzar ()
-		{
-			Avanzar (DireccionActual);
+			ClrCola.OnCambio += Dibujar;
 		}
 
 		/// <summary>
@@ -216,7 +196,11 @@ namespace Serpentina
 			}
 		}
 
-		public Opciones.Color clr = new Opciones.Color ();
+		/// <summary>
+		/// Opciones de cola.
+		/// </summary>
+		public Opciones.Color ClrCola = new Opciones.Color ();
+		public Opciones.Color ClrCabeza = new Opciones.Color ();
 
 		public void Avanzar (Universo U)
 		{
@@ -248,9 +232,8 @@ namespace Serpentina
 				break;
 			}
 
-			PosTmp = Pos (0); 	// Obtiene la posición de la cabeza
-
-			ConsoleExt.ConsoleExt.Poner (PosTmp, clr);
+			ConsoleExt.ConsoleExt.Poner (Pos(0), ClrCabeza);
+			ConsoleExt.ConsoleExt.Poner (Pos(1), ClrCola);
 		}
 
 		/// <summary>
@@ -259,13 +242,10 @@ namespace Serpentina
 		public void Dibujar ()
 		{
 			Structs.Par<int, int> PosTmp;
-			for (int i = 0; i <= Longitud; i++) {
+			ConsoleExt.ConsoleExt.Poner (Pos (0), ClrCabeza);
+			for (int i = 1; i <= Longitud; i++) {
 				PosTmp = Pos (i);
-				Console.CursorLeft = PosTmp.x;
-				Console.CursorTop = PosTmp.y;
-				Console.BackgroundColor = clr.bgc;
-				Console.ForegroundColor = clr.fgc;
-				Console.Write (clr.chr);
+				ConsoleExt.ConsoleExt.Poner(PosTmp, ClrCola);
 			}
 		}
 
@@ -288,7 +268,7 @@ namespace Serpentina
 
 		public override string ToString ()
 		{
-			return clr.fgc.ToString ();
+			return ClrCola.fgc.ToString ();
 		}
 	}
 }

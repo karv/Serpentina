@@ -19,8 +19,24 @@ namespace Serpentina
             s.Posicion.y = 3;
             s2.Posicion.x = 7;
             s2.Posicion.y = 3;
-            s.clr.fgc = ConsoleColor.White;
-            s2.clr.fgc = ConsoleColor.Cyan;
+
+            s.ClrCola.fgc = ConsoleColor.White;
+            s2.ClrCola.fgc = ConsoleColor.Cyan;
+
+			s.ClrCabeza.fgc = ConsoleColor.White;
+			s2.ClrCabeza.fgc = ConsoleColor.Cyan;
+
+			s.ClrCabeza.bgc = ConsoleColor.Black;
+			s2.ClrCabeza.bgc = ConsoleColor.Black;
+
+			s.ClrCola.bgc = ConsoleColor.Black;
+			s2.ClrCola.bgc = ConsoleColor.Black;
+
+			s.ClrCabeza.chr = 'o';
+			s2.ClrCabeza.chr = 'o';
+
+			s.ClrCola.chr = '#';
+			s2.ClrCola.chr = '#';
 
 			U.bgColor.bgc = ConsoleColor.Black;
 			U.bgColor.chr = ' ';

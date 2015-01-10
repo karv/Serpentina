@@ -148,7 +148,7 @@ namespace Serpentina
 		void AlMorir (Serpiente x)
 		{
 			x.Borrar (bgColor);     // Debe marcar error si no es SerpienteConsola.
-			ConsoleExt.ConsoleExt.Poner (string.Format ("Muere {0}.", x), 1, 20, x.clr);
+			ConsoleExt.ConsoleExt.Poner (string.Format ("Muere {0}.", x), 1, 20, x.ClrCola);
 		}
 
 		/// <summary>
