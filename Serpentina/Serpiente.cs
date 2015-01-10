@@ -14,13 +14,6 @@ namespace Serpentina
 			Derecha = 2
 		}
 
-		public enum enumDirecciónRelativa
-		{
-			Derecho = 0,
-			Izquierda = -1,
-			Derecha = 1,
-			Atrás = 2
-		}
 
 //		enumDirecciónAbsoluta _dirección = enumDirecciónAbsoluta.Arriba;
 		Structs.Par<int, int> _Pos = new Structs.Par<int, int>();
