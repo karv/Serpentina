@@ -10,18 +10,18 @@ namespace ConsoleExt
 		/// <param name="c">Catarter.</param>
 		/// <param name="Loc">Location.</param>
 		/// <param name="clr">Color</param>
-		public static void Poner (char c, Structs.Par<int, int> Loc, Opciones.Color clr)
+		public static void Poner (Structs.Par<int, int> Loc, Opciones.Color clr)
 		{
 			Console.BackgroundColor = clr.bgc;
 			Console.ForegroundColor = clr.fgc;
 			Console.CursorLeft = Loc.x;
 
 			Console.CursorTop = Loc.y;
-			Console.Write (c);
+			Console.Write (clr.chr);
 		}
-		public static void Poner (char c, int x, int y, Opciones.Color clr)
+		public static void Poner (int x, int y, Opciones.Color clr)
         {
-            Poner(c, new Structs.Par<int, int>(x, y), clr);
+            Poner(new Structs.Par<int, int>(x, y), clr);
         }
 
 		/// <summary>

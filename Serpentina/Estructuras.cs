@@ -94,38 +94,22 @@ namespace Opciones {
 	{
 		// TODO: 	bg y fg no deberían ser parte de esta clase. 
 		//			Mover a una extensión.
-		char _bg = ' ';								// Texto de fondo
 		char _fg = 'x';  							// Texto de dibujo
 		ConsoleColor _bgc = ConsoleColor.Black; 	// Color de fondo
 		ConsoleColor _fgc = ConsoleColor.Green; 	// Color de frente
 		public event Action OnCambio;
 
 		/// <summary>
-		/// Char de fondo
-		/// </summary>
-		/// <value>The background.</value>
-		public char bg {
-			get {
-				return _bg;
-			}
-			set {
-				_bg = value;
-				OnCambio.Invoke ();
-			}
-		}
-   
-
-		/// <summary>
 		/// Char de frente
 		/// </summary>
 		/// <value>The background.</value>
-		public char fg {
+		public char chr {
 			get {
 				return _fg;
 			}
 			set {
 				_fg = value;
-				OnCambio.Invoke ();
+				if (OnCambio != null) OnCambio.Invoke ();
 			}
 		}
 
@@ -139,7 +123,7 @@ namespace Opciones {
 			}
 			set {
 				_bgc = value;
-				OnCambio.Invoke ();
+				if (OnCambio != null) OnCambio.Invoke ();
 			}
 		}
 
@@ -153,7 +137,7 @@ namespace Opciones {
 			}
 			set {
 				_fgc = value;
-				OnCambio.Invoke ();
+				if (OnCambio != null) OnCambio.Invoke ();
 			}
 		}
 	}
