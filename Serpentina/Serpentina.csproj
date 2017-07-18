@@ -33,24 +33,36 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="CE">
-      <HintPath>..\packages\CE.core.0.2\lib\CE.dll</HintPath>
-    </Reference>
     <Reference Include="CE.Collections">
       <HintPath>..\packages\CE.Collections.0.3.0\lib\net45\CE.Collections.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="CE">
+      <HintPath>..\packages\CE.core.0.2.1\lib\CE.dll</HintPath>
+    </Reference>
+    <Reference Include="CE.Console">
+      <HintPath>..\packages\CE.Console.0.1.6\lib\net45\CE.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="CE.Text">
+      <HintPath>..\packages\CE.Text.0.1.1\lib\CE.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="CE.Controls">
+      <HintPath>..\packages\CE.Control.0.1.0\lib\net45\CE.Controls.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlTiempo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Estructuras.cs" />
-    <Compile Include="ArregloCíclico.cs" />
-    <Compile Include="Serpiente.cs" />
-    <Compile Include="Universo.cs" />
-    <Compile Include="ConsoleExten.cs" />
-    <Compile Include="enumAccion.cs" />
+    <Compile Include="MoveDir.cs" />
+    <Compile Include="Snake.cs" />
+    <Compile Include="UniverseControl.cs" />
+    <Compile Include="SnakeDrawer.cs" />
+    <Compile Include="SnakeCollider.cs" />
+    <Compile Include="KeyMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
