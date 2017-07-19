@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using CE;
 using CE.Console.Controls;
 
@@ -13,23 +12,29 @@ namespace Serpentina
 		const int X_SIZE = 40;
 		const int Y_SIZE = 40;
 
-		readonly List<Snake> _snakes;
-		readonly Size _fieldSize;
-		private ConsoleColor backgroundColor = ConsoleColor.Black;
+		internal SnakeCollection _snakes;
+		internal readonly Size _fieldSize;
+		internal ConsoleColor _backgroundColor = ConsoleColor.Black;
 
 		[Newtonsoft.Json.JsonConstructor]
 		public UniverseControl ()
 		{
-			_snakes = new List<Snake> ();
+			_snakes = new SnakeCollection ();
 			_fieldSize = new Size (X_SIZE, Y_SIZE);
+		}
+
+		/// Pre iteration cycle setup.
+		protected override void ExecuteInitialization ()
+		{
+			_snakes = App.Systems.Get<SnakeCollection> ();
 		}
 
 		public ConsoleColor BackgroundColor
 		{
-			get => backgroundColor;
+			get => _backgroundColor;
 			set
 			{
-				backgroundColor = value;
+				_backgroundColor = value;
 				QueueDraw ();
 			}
 		}
@@ -41,6 +46,7 @@ namespace Serpentina
 				snake.Draw (this);
 		}
 
+		/// Request the optimal size for this control.
 		protected override Size RequestSize ()
 		{
 			return _fieldSize;

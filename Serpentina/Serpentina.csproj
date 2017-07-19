@@ -50,7 +50,7 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="CE.Controls">
-      <HintPath>..\packages\CE.Control.0.1.0\lib\net45\CE.Controls.dll</HintPath>
+      <HintPath>..\packages\CE.Control.0.1.2\lib\net45\CE.Controls.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -61,8 +61,9 @@
     <Compile Include="Snake.cs" />
     <Compile Include="UniverseControl.cs" />
     <Compile Include="SnakeDrawer.cs" />
-    <Compile Include="SnakeCollider.cs" />
+    <Compile Include="SnakeMovement.cs" />
     <Compile Include="KeyMapper.cs" />
+    <Compile Include="SnakeCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

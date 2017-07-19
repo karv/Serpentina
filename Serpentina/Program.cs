@@ -8,13 +8,14 @@ namespace Serpentina
 	{
 		public static App App;
 		static KeyComb _escapeKey;
+
 		public static void Main ()
 		{
 			var design = CE.Console.Controls.Import.JsonImporter.ImportFromFile ("GameUI.json");
 			_escapeKey = new KeyComb (ConsoleKey.Escape);
 			App = new App (design: design);
 			App.Initialize ();
-			var kl = App.GetSystem<KeyboardListener> ();
+			var kl = App.Systems.Get<KeyboardListener> ();
 			kl.KeyPressed += KeyPressed;
 			App.Run ();
 		}
