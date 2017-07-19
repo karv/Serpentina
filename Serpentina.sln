@@ -42,5 +42,11 @@ Global
 		$8.String = T
 		$7.RequiredSuffixes = $9
 		$9.String = Exception
+		$0.TextStylePolicy = $10
+		$10.FileWidth = 150
+		$10.TabWidth = 2
+		$10.TabsToSpaces = True
+		$10.IndentWidth = 2
+		$10.scope = application/json
 	EndGlobalSection
 EndGlobal
