@@ -5,3 +5,4 @@ Serpentina/obj
 *.orig
 *.usertasks
 packages
+*.user
