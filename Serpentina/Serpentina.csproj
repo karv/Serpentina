@@ -64,6 +64,7 @@
     <Compile Include="SnakeMovement.cs" />
     <Compile Include="KeyMapper.cs" />
     <Compile Include="SnakeCollection.cs" />
+    <Compile Include="SnakeTail.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
