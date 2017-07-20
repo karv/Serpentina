@@ -56,16 +56,16 @@ namespace Serpentina
 			var area = section.GetArea ();
 			var top = '/' + new string ('=', area.Size.Width - 2) + '\\';
 			section.CursorLocation = Point.Zero;
-			section.Write (top);
+			section.Write (top, color);
 			for (int i = 1; i <= area.Size.Height - 2; i++)
 			{
 				section.CursorLocation = new Point (area.Left, i);
-				section.Write ("|");
+				section.Write ("|", color);
 				section.CursorLocation = new Point (area.Right, i);
-				section.Write ("|");
+				section.Write ("|", color);
 			}
 			var bot = '\\' + new string ('=', area.Size.Width - 2) + '/';
-			section.Write (bot);
+			section.Write (bot, color);
 		}
 
 		/// Request the optimal size for this control.
