@@ -1,0 +1,21 @@
+﻿{
+  "Control":{
+    "$type":"CE.Console.Controls.VDiv, CE.Controls",
+    "Childs": [
+      {
+        "Control":{
+          "$type":"CE.Console.Controls.Label, CE.Controls",
+          "Caption":"{Red}Score goes here."
+        },
+        "SizeY": 3,
+        "Fill": true
+      },
+      {
+        "Control":{
+          "$type":"Serpentina.UniverseControl, Serpentina"
+        },
+        "Fill": true
+      }     
+    ]          
+  }
+}

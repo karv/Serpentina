@@ -4,3 +4,5 @@ Serpentina/obj
 *.v12.suo
 *.orig
 *.usertasks
+packages
+*.user

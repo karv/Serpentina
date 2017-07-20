@@ -16,5 +16,37 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Serpentina\Serpentina.csproj
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$1.ResourceNamePolicy = MSBuild
+		$0.TextStylePolicy = $2
+		$2.TabWidth = 2
+		$2.IndentWidth = 2
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$3.SpacingAfterMethodDeclarationName = True
+		$3.SpaceAfterMethodCallName = True
+		$0.StandardHeader = $4
+		$0.NameConventionPolicy = $5
+		$5.Rules = $6
+		$6.NamingRule = $7
+		$7.Name = Type Parameters
+		$7.AffectedEntity = TypeParameter
+		$7.VisibilityMask = VisibilityMask
+		$7.NamingStyle = PascalCase
+		$7.IncludeInstanceMembers = True
+		$7.IncludeStaticEntities = True
+		$7.RequiredPrefixes = $8
+		$8.String = T
+		$7.RequiredSuffixes = $9
+		$9.String = Exception
+		$0.TextStylePolicy = $10
+		$10.FileWidth = 150
+		$10.TabWidth = 2
+		$10.TabsToSpaces = True
+		$10.IndentWidth = 2
+		$10.scope = application/json
 	EndGlobalSection
 EndGlobal
