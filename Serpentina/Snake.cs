@@ -1,8 +1,7 @@
 ﻿using System;
-using CE;
-using CE.Collections;
-using CE.Color;
 using System.Linq;
+using CE;
+using CE.Color;
 
 namespace Serpentina
 {

@@ -5,6 +5,12 @@ namespace Serpentina
 {
 	public class SnakeTail : ModulusList<Point>
 	{
+		public SnakeTail (Point starting, int len)
+		{
+			for (int i = 0; i < len; i++)
+				Add (starting);
+		}
+
 		public void PushPoint (Point p)
 		{
 			LastToFirst ();

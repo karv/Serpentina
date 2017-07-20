@@ -4,6 +4,9 @@ using CE.Console.Controls;
 
 namespace Serpentina
 {
+	/// <summary>
+	/// The game state
+	/// </summary>
 	public class SnakeCollection : ISystem, IEnumerable<Snake>
 	{
 		public List<Snake> Snakes;
