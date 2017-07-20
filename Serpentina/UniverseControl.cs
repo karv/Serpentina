@@ -13,6 +13,12 @@ namespace Serpentina
 	{
 		const int X_SIZE = 40;
 		const int Y_SIZE = 40;
+		const char EDGE_HOR_CHAR = '\u2500';
+		const char EDGE_VER_CHAR = '\u2502';
+		const char EDGE_DTL_CHAR = '\u250C';
+		const char EDGE_DTR_CHAR = '\u2510';
+		const char EDGE_DBL_CHAR = '\u2514';
+		const char EDGE_DBR_CHAR = '\u2518';
 
 		internal SnakeCollection _snakes;
 		internal readonly Size _fieldSize;
@@ -54,17 +60,17 @@ namespace Serpentina
 		static void DrawBorder (BufferSection section, FullColorInfo color)
 		{
 			var area = section.GetArea ();
-			var top = '/' + new string ('=', area.Size.Width - 2) + '\\';
+			var top = EDGE_DTL_CHAR + new string (EDGE_HOR_CHAR, area.Size.Width - 2) + EDGE_DTR_CHAR;
 			section.CursorLocation = Point.Zero;
 			section.Write (top, color);
 			for (int i = 1; i <= area.Size.Height - 2; i++)
 			{
 				section.CursorLocation = new Point (area.Left, i);
-				section.Write ("|", color);
+				section.Write (EDGE_VER_CHAR.ToString (), color);
 				section.CursorLocation = new Point (area.Right, i);
-				section.Write ("|", color);
+				section.Write (EDGE_VER_CHAR.ToString (), color);
 			}
-			var bot = '\\' + new string ('=', area.Size.Width - 2) + '/';
+			var bot = EDGE_DBL_CHAR + new string (EDGE_HOR_CHAR, area.Size.Width - 2) + EDGE_DBR_CHAR;
 			section.Write (bot, color);
 		}
 
