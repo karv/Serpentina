@@ -14,6 +14,10 @@ namespace Serpentina
 			var design = CE.Console.Controls.Import.JsonImporter.ImportFromFile ("GameUI.json");
 			_escapeKey = new KeyComb (ConsoleKey.Escape);
 			App = new App (design: design);
+
+			App.Systems.Register (new SnakeMovement (App));
+			App.Systems.Register (new SnakeCollection ());
+
 			App.Initialize ();
 			var kl = App.Systems.Get<KeyboardListener> ();
 			kl.KeyPressed += KeyPressed;

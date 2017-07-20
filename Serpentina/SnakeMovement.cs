@@ -1,8 +1,8 @@
 ﻿using System;
-using CE.Console.Controls;
-using CE;
 using System.Collections.Generic;
 using System.Linq;
+using CE;
+using CE.Console.Controls;
 
 namespace Serpentina
 {
@@ -97,11 +97,6 @@ namespace Serpentina
 		{
 			_snakes = _app.Systems.Get<SnakeCollection> ();
 			_app.Update += Update;
-		}
-
-		public void Update ()
-		{
-			throw new NotImplementedException ();
 		}
 
 		void Update (object sender, TimeSpan e)
