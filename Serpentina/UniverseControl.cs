@@ -19,7 +19,6 @@ namespace Serpentina
 		internal ConsoleColor _backgroundColor = ConsoleColor.Black;
 		FullColorInfo _edgeColor;
 
-		[Newtonsoft.Json.JsonConstructor]
 		public UniverseControl ()
 		{
 			_snakes = new SnakeCollection ();
@@ -68,6 +67,7 @@ namespace Serpentina
 			var bot = '\\' + new string ('=', area.Size.Width - 2) + '/';
 			section.Write (bot);
 		}
+
 		/// Request the optimal size for this control.
 		protected override Size RequestSize ()
 		{
