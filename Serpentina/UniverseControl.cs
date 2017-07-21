@@ -51,10 +51,10 @@ namespace Serpentina
 		public override void DoDraw ()
 		{
 			Section.Clear (BackgroundColor);
-			foreach (var snake in _snakes)
-				snake.Draw (this);
-
 			DrawBorder (Section, _edgeColor);
+
+			foreach (var snake in _snakes)
+				snake.Draw (Section);
 		}
 
 		static void DrawBorder (BufferSection section, FullColorInfo color)

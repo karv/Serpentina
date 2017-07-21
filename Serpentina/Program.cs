@@ -1,7 +1,7 @@
 using System;
+using CE;
 using CE.Console;
 using CE.Console.Controls;
-using CE;
 
 namespace Serpentina
 {
@@ -15,8 +15,14 @@ namespace Serpentina
 		{
 			var design = CE.Console.Controls.Import.JsonImporter.ImportFromFile ("GameUI.json");
 			_escapeKey = new KeyComb (ConsoleKey.Escape);
+#if DEBUG
+			if (Console.BufferWidth == 0)
+				App = new App (new Size (60, 40), design);
+			else
+				App = new App (design: design);
+#else
 			App = new App (design: design);
-
+#endif
 			var snakeColl = new SnakeCollection ();
 			CreateSnakes (snakeColl);
 
@@ -33,14 +39,15 @@ namespace Serpentina
 		{
 			var snake0 = new Snake
 			{
-				AccumulatedAdvTime = TimeSpan.FromSeconds (1),
+				AccumulatedAdvTime = TimeSpan.FromSeconds (3),
 				BodyPoints = new SnakeTail (new Point (3, 3), 3),
-				CurrentHeadDir = MoveDir.Up,
-				BodyChar = new CE.Color.ColoredChar ('o', ConsoleColor.Green),
-				HeadChar = new CE.Color.ColoredChar ('O', ConsoleColor.Green)
+				CurrentHeadDir = MoveDir.Right,
+				BodyChar = new CE.Color.ColoredChar ('B', ConsoleColor.Green),
+				HeadChar = new CE.Color.ColoredChar ('H', ConsoleColor.Green)
 			};
 			snakes.Snakes.Add (snake0);
 		}
+
 		static void KeyPressed (object sender, KeyEventArgs e)
 		{
 			if (_escapeKey.IsInstance (e.Key))
