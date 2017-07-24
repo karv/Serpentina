@@ -2,6 +2,9 @@
 
 namespace Serpentina
 {
+	/// <summary>
+	/// Draws the snakes
+	/// </summary>
 	public static class SnakeDrawer
 	{
 		/// <summary>
@@ -11,7 +14,7 @@ namespace Serpentina
 		{
 			section.CursorLocation = snake.HeadLocation;
 			section.PutChar (snake.HeadChar);
-			for (int i = 1; i < snake.Lenght; i++)
+			for (int i = 1; i < snake.Length; i++)
 			{
 				section.CursorLocation = snake.BodyPoints[i];
 				section.PutChar (snake.BodyChar);

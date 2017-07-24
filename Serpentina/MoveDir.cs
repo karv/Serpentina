@@ -7,14 +7,32 @@ namespace Serpentina
 	/// </summary>
 	public enum MoveDir
 	{
+		/// <summary>
+		/// Up.
+		/// </summary>
 		Up,
+		/// <summary>
+		/// Down.
+		/// </summary>
 		Down,
+		/// <summary>
+		/// Left.
+		/// </summary>
 		Left,
+		/// <summary>
+		/// Right.
+		/// </summary>
 		Right
 	}
 
+	/// <summary>
+	/// Extends the enum <see cref="MoveDir"/>.
+	/// </summary>
 	public static class DirExt
 	{
+		/// <summary>
+		/// Converts the direction into directional <see cref="CE.Point"/>
+		/// </summary>
 		public static Point ToPoint (this MoveDir dir)
 		{
 			switch (dir)

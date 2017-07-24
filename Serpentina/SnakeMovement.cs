@@ -6,10 +6,25 @@ using CE.Console.Controls;
 
 namespace Serpentina
 {
+	/// <summary>
+	/// Contains information about a collision.
+	/// </summary>
 	public class SnakeCollision
 	{
+		/// <summary>
+		/// Is <c>true</c> if there is a collision.
+		/// </summary>
 		public readonly bool AnyCollision;
+
+		/// <summary>
+		/// If <see cref="AnyCollision"/>, 
+		/// this is the snake that crashed.
+		/// </summary>
 		public readonly Snake HeadCollider;
+		/// <summary>
+		/// If <see cref="AnyCollision"/>, 
+		/// this is the object where <see cref="HeadCollider"/> crashed.
+		/// </summary>
 		public readonly Snake PassiveCollider;
 
 		SnakeCollision ()
@@ -17,6 +32,10 @@ namespace Serpentina
 			AnyCollision = false;
 		}
 
+		/// <summary>
+		/// </summary>
+		/// <param name="headCollider">Head collider.</param>
+		/// <param name="passiveCollider">Passive collider.</param>
 		public SnakeCollision (Snake headCollider, Snake passiveCollider)
 		{
 			HeadCollider = headCollider;
@@ -24,6 +43,9 @@ namespace Serpentina
 			AnyCollision = true;
 		}
 
+		/// <summary>
+		/// The constant for no collision.
+		/// </summary>
 		public static readonly SnakeCollision NoCollision;
 
 		static SnakeCollision ()
@@ -32,11 +54,16 @@ namespace Serpentina
 		}
 	}
 
+	/// <summary>
+	/// This class controls the movement of snakes.
+	/// </summary>
 	public class SnakeMovement : ISystem
 	{
 		SnakeCollection _snakes;
 		App _app;
 
+		/// <summary>
+		/// </summary>
 		public SnakeMovement (App app)
 		{
 			_app = app ?? throw new ArgumentNullException (nameof (app));
@@ -93,6 +120,7 @@ namespace Serpentina
 			}
 		}
 
+		/// Initialize this system
 		public void Initialize ()
 		{
 			_snakes = _app.Systems.Get<SnakeCollection> ();
@@ -104,6 +132,9 @@ namespace Serpentina
 			MoveAllSnakes (e);
 		}
 
+		/// <summary>
+		/// Occurs when a collision happen.
+		/// </summary>
 		public event EventHandler<SnakeCollision> OnCollision;
 	}
 }

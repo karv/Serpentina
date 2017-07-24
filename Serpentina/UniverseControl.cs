@@ -25,6 +25,8 @@ namespace Serpentina
 		internal ConsoleColor _backgroundColor = ConsoleColor.Black;
 		FullColorInfo _edgeColor;
 
+		/// <summary>
+		/// </summary>
 		public UniverseControl ()
 		{
 			_snakes = new SnakeCollection ();
@@ -38,6 +40,9 @@ namespace Serpentina
 			_snakes = App.Systems.Get<SnakeCollection> ();
 		}
 
+		/// <summary>
+		/// Gets or sets the color of the background.
+		/// </summary>
 		public ConsoleColor BackgroundColor
 		{
 			get => _backgroundColor;
@@ -48,6 +53,9 @@ namespace Serpentina
 			}
 		}
 
+		/// <summary>
+		/// Draw this control.
+		/// </summary>
 		public override void DoDraw ()
 		{
 			Section.Clear (BackgroundColor);
