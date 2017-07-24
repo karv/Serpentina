@@ -33,15 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="CE.Collections">
-      <HintPath>..\packages\CE.Collections.0.3.0\lib\net45\CE.Collections.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="CE">
       <HintPath>..\packages\CE.core.0.2.1\lib\CE.dll</HintPath>
-    </Reference>
-    <Reference Include="CE.Console">
-      <HintPath>..\packages\CE.Console.0.1.6\lib\net45\CE.Console.dll</HintPath>
     </Reference>
     <Reference Include="CE.Text">
       <HintPath>..\packages\CE.Text.0.1.1\lib\CE.Text.dll</HintPath>
@@ -50,7 +44,13 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="CE.Controls">
-      <HintPath>..\packages\CE.Control.0.1.2\lib\net45\CE.Controls.dll</HintPath>
+      <HintPath>..\packages\CE.Control.0.1.2.1\lib\net45\CE.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="CE.Collections">
+      <HintPath>..\packages\CE.Collections.0.3.0.1\lib\net45\CE.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="CE.Console">
+      <HintPath>..\packages\CE.Console.0.1.7\lib\net45\CE.Console.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

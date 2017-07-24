@@ -24,6 +24,7 @@ namespace Serpentina
 		public Point HeadLocation { get { return _bodyPoints[0]; } }
 		public Point OverheadLocation { get { return HeadLocation + _currentHeadDir.ToPoint (); } }
 		public bool IsAlive { get => _isAlive; }
+		public int Lenght { get { return _bodyPoints.Count; } }
 
 		/// <summary>
 		/// Accumulates the specified time it <see cref="AccumulatedAdvTime"/>
