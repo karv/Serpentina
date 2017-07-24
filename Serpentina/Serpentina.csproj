@@ -37,9 +37,6 @@
     <Reference Include="CE">
       <HintPath>..\packages\CE.core.0.2.1\lib\CE.dll</HintPath>
     </Reference>
-    <Reference Include="CE.Console">
-      <HintPath>..\packages\CE.Console.0.1.6\lib\net45\CE.Console.dll</HintPath>
-    </Reference>
     <Reference Include="CE.Text">
       <HintPath>..\packages\CE.Text.0.1.1\lib\CE.Text.dll</HintPath>
     </Reference>
@@ -51,6 +48,9 @@
     </Reference>
     <Reference Include="CE.Collections">
       <HintPath>..\packages\CE.Collections.0.3.0.1\lib\net45\CE.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="CE.Console">
+      <HintPath>..\packages\CE.Console.0.1.7\lib\net45\CE.Console.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
